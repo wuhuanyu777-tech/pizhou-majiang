@@ -1,0 +1,49 @@
+{
+  "name": "@kobalab/majiang-server",
+  "version": "1.4.5",
+  "description": "麻雀サーバー",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "majiang-server": "./bin/server.js",
+    "majiang-bot": "./bin/client.js"
+  },
+  "scripts": {
+    "test": "mocha -u tdd",
+    "test:cover": "nyc -r lcov -r text npm test",
+    "start": "node bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kobalab/majiang-server.git"
+  },
+  "keywords": [
+    "麻雀",
+    "電脳麻将"
+  ],
+  "author": "Satoshi Kobayashi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kobalab/majiang-server/issues"
+  },
+  "homepage": "https://github.com/kobalab/majiang-server#readme",
+  "dependencies": {
+    "@kobalab/majiang-ai": "file:../src/majiang-ai",
+    "@kobalab/majiang-core": "file:../src/majiang-core",
+    "express": "^4.21.2",
+    "express-session": "^1.18.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-hatena-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.1",
+    "nyc": "^17.1.0"
+  }
+}
