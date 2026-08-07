@@ -1,6 +1,6 @@
 # 邳州麻将（查胡麻将）
 
-基于 [kobalab/Majiang](https://github.com/kobalab/Majiang)（電脳麻将，MIT License）改造的邳州本地麻将，支持**单机人机对战**和**多人联网对战**。
+邳州本地麻将 HTML5 游戏，支持**单机人机对战**和**多人联网对战**。
 
 <p align="center">
   <img src="docs/images/logo.png" alt="邳州麻将" width="600">
@@ -84,16 +84,24 @@ node bin/client.js -r <房间号> -n "AI-3"
 ## 目录结构
 
 ```
-├── src/
-│   ├── js/               应用主程序（页面逻辑）
-│   ├── html/             pug 模板（page/ 页面 + inc/ 片段）
-│   ├── css/              stylus 样式
-│   ├── majiang-core/     麻将引擎（手牌/牌山/向听/和了计算）
-│   ├── majiang-ai/       AI 思考逻辑
-│   └── majiang-ui/       界面渲染（牌面/棋盘/牌谱）
-├── server/               联网对战服务器端（express + socket.io）
-├── dist/                 构建产物
-└── package.json
+├── src/                     前端源码
+│   ├── js/                  应用主程序（页面逻辑）
+│   ├── html/                pug 模板（page/ 页面 + inc/ 片段）
+│   ├── css/                 stylus 样式
+│   ├── majiang-core/        麻将引擎（手牌/牌山/向听/和了计算）
+│   ├── majiang-ai/          AI 思考逻辑
+│   └── majiang-ui/          界面渲染（牌面/棋盘/牌谱）
+├── server/                  联网对战服务器端
+│   ├── bin/                 server.js（启动）/ client.js（AI 客户端）
+│   ├── lib/                 game.js / lobby.js / passport.js
+│   └── test/                测试
+├── dist/                    构建产物（前端）
+├── docs/
+│   └── images/              logo 与游戏截图
+├── webpack.config.js        JS 打包配置
+├── setver.sh                版本号批量替换脚本
+├── package.json
+└── README.md
 ```
 
 ## 界面定制（本仓库已改）
@@ -108,7 +116,7 @@ node bin/client.js -r <房间号> -n "AI-3"
 
 ## 版权与许可
 
-本项目基于 [kobalab/Majiang](https://github.com/kobalab/Majiang)（MIT License，作者 Satoshi Kobayashi）与 [kobalab/majiang-server](https://github.com/kobalab/majiang-server)（MIT License）改造，遵循 MIT 协议。
+本项目版权归 **吴桓宇（wuhuanyu777-tech）** 所有，遵循 MIT 协议（详见 [LICENSE](LICENSE)）。
 
 ## 联系
 
