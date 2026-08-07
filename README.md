@@ -2,6 +2,10 @@
 
 基于 [kobalab/Majiang](https://github.com/kobalab/Majiang)（電脳麻将，MIT License）改造的邳州本地麻将，支持**单机人机对战**和**多人联网对战**。
 
+<p align="center">
+  <img src="docs/images/logo.png" alt="邳州麻将" width="600">
+</p>
+
 ## 玩法特色
 
 - **查胡麻将规则**：120 张牌 · 胡数/幺数计分 · 飘荤/塌牌/包庄
@@ -9,6 +13,10 @@
 - **联网对战**：4 个真人局域网/公网对局（需要服务器端，见下文）
 - **自动演示**：4 个 AI 自动对局，观战模式
 - 进房即上牌桌，满 4 人自动开局，免登录自动随机名
+
+<p align="center">
+  <img src="docs/images/screenshot-home.png" alt="邳州麻将主页" width="800">
+</p>
 
 ## 快速开始（单机）
 
