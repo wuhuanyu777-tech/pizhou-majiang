@@ -1,0 +1,71 @@
+.message.hide
+  | 规则已修改。
+
+form.rule
+  dl
+    dt 局数
+    dd
+      label
+        input(name="場数" type="radio" value="0")
+        | 一局战
+      label
+        input(name="場数" type="radio" value="1")
+        | 东风战(4局)
+      label
+        input(name="場数" type="radio" value="2")
+        | 东南战(8局)
+      label
+        input(name="場数" type="radio" value="4")
+        | 一庄战(16局)
+  dl
+    dt 底胡
+    dd
+      input(name="底胡" type="text" maxlength="3")
+      | 分（胡牌者固定加底胡）
+    dt 胡底分
+    dd
+      input(name="胡底分" type="text" maxlength="4")
+      | 分/胡
+    dt 幺底分
+    dd
+      input(name="幺底分" type="text" maxlength="4")
+      | 分/幺
+    dt 荤底
+    dd
+      input(name="荤底" type="text" maxlength="4")
+      | 分（飘荤时每家额外加）
+  dl
+    dt 一炮多响
+    dd
+      label
+        input(name="最大同時和了数" type="radio" value="1")
+        | 只准一家胡
+      label
+        input(name="最大同時和了数" type="radio" value="2")
+        | 允许一炮多响
+    dt 起手同牌流局
+    dd
+      label
+        input(name="途中流局あり" type="radio" value="0")
+        | 关闭
+      label
+        input(name="途中流局あり" type="radio" value="1")
+        | 开启（第一巡每家打出同一张牌则流局）
+    dt 包庄
+    dd
+      label
+        input(name="包庄あり" type="radio" value="0")
+        | 关闭
+      label
+        input(name="包庄あり" type="radio" value="1")
+        | 开启（单调胡被放枪，放枪者包庄）
+    dt 找拧
+    dd
+      label
+        input(name="找拧あり" type="radio" value="0")
+        | 关闭
+      label
+        input(name="找拧あり" type="radio" value="1")
+        | 开启
+
+  input(type="submit" value="应用")

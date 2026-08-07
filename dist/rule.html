@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>邳州麻将: 规则设置</title>
+        <meta name="description" content="カスタマイズしたルールを対局に使用できます">
+        <meta name="twitter:card" content="summary">
+        <meta property="og:title" content="邳州麻将: 规则设置">
+        <meta property="og:description" content="カスタマイズしたルールを対局に使用できます">
+        <meta property="og:image" content="https://kobalab.net/majiang/img/icon.png">
+    <link rel="icon" type="image/png" href="img/icon.png">
+    <link rel="apple-touch-icon" type="image/png" href="img/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/majiang-1.2.8.css">
+    <script src="js/majiang-1.2.8.js" defer></script>
+    <script src="js/rule-1.2.8.js" defer></script>
+  </head>
+  <body class="rule">
+    <div id="loaderr" style="display: none">
+      <p>
+        プログラムのロードでエラーが発生しました。
+        お使いのブラウザでは実行できない可能性があります。
+        リロードして問題が解決しない場合は、
+        Google Chromeなど最新のブラウザでアクセスしてみてください。
+      </p>
+      <script>
+        window.onload = function(){
+          var elem = document.getElementById('loaderr');
+          if (typeof Majiang === 'undefined') elem.removeAttribute('style');
+        }
+      </script>
+    </div>
+    <ul id="navi">
+      <li><a href="../">首页</a></li>
+      <li><a href="index.html">邳州麻将</a></li>
+      <li><a href="autoplay.html">自动对战</a></li>
+      <li><a href="netplay.html">网络对战</a></li>
+      <li><a href="rule.html">规则</a></li>
+      <li><a href="paipu.html">牌谱</a></li>
+      <li><a href="paili.html">牌理</a></li>
+      <li><a href="hule.html">计分</a></li>
+      <li><a href="drill.html">练习</a></li>
+      <li><a href="dapai.html">何切</a></li>
+      <li><a href="paiga.html">牌画</a></li>
+      <li><a href="https://github.com/kobalab/Majiang" target="_blank">GitHub</a></li>
+    </ul>
+    <div class="version">ver. 1.2.8</div>
+    <div class="message hide">规则已修改。</div>
+    <form class="rule">
+      <dl>
+        <dt>局数</dt>
+        <dd>
+          <label>
+            <input name="場数" type="radio" value="0">一局战
+          </label>
+          <label>
+            <input name="場数" type="radio" value="1">东风战(4局)
+          </label>
+          <label>
+            <input name="場数" type="radio" value="2">东南战(8局)
+          </label>
+          <label>
+            <input name="場数" type="radio" value="4">一庄战(16局)
+          </label>
+        </dd>
+      </dl>
+      <dl>
+        <dt>底胡</dt>
+        <dd>
+          <input name="底胡" type="text" maxlength="3">分（胡牌者固定加底胡）
+        </dd>
+        <dt>胡底分</dt>
+        <dd>
+          <input name="胡底分" type="text" maxlength="4">分/胡
+        </dd>
+        <dt>幺底分</dt>
+        <dd>
+          <input name="幺底分" type="text" maxlength="4">分/幺
+        </dd>
+        <dt>荤底</dt>
+        <dd>
+          <input name="荤底" type="text" maxlength="4">分（飘荤时每家额外加）
+        </dd>
+      </dl>
+      <dl>
+        <dt>一炮多响</dt>
+        <dd>
+          <label>
+            <input name="最大同時和了数" type="radio" value="1">只准一家胡
+          </label>
+          <label>
+            <input name="最大同時和了数" type="radio" value="2">允许一炮多响
+          </label>
+        </dd>
+        <dt>起手同牌流局</dt>
+        <dd>
+          <label>
+            <input name="途中流局あり" type="radio" value="0">关闭
+          </label>
+          <label>
+            <input name="途中流局あり" type="radio" value="1">开启（第一巡每家打出同一张牌则流局）
+          </label>
+        </dd>
+        <dt>包庄</dt>
+        <dd>
+          <label>
+            <input name="包庄あり" type="radio" value="0">关闭
+          </label>
+          <label>
+            <input name="包庄あり" type="radio" value="1">开启（单调胡被放枪，放枪者包庄）
+          </label>
+        </dd>
+        <dt>找拧</dt>
+        <dd>
+          <label>
+            <input name="找拧あり" type="radio" value="0">关闭
+          </label>
+          <label>
+            <input name="找拧あり" type="radio" value="1">开启
+          </label>
+        </dd>
+      </dl>
+      <input type="submit" value="应用">
+    </form>
+  </body>
+</html>

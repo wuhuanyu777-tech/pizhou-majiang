@@ -1,0 +1,113 @@
+body.title
+    color:      white
+    background:
+        radial-gradient(1200px 600px at 50% -10%, #14523f 0%, #0d3b2e 45%, #09281f 100%)
+    margin: 0
+    #title
+        display: block
+    #navi
+        width: 800px
+        margin: 0 auto
+    > .version
+        display: none
+
+#title
+    display: none
+    margin: 60px auto
+    width: 640px
+    padding: 8px 4px 24px
+    border-radius: 16px
+    background: rgba(10, 30, 24, 0.72)
+    border: 1px solid rgba(232, 193, 90, 0.25)
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08)
+    backdrop-filter: blur(6px)
+    color:      #eef7f2
+    text-align: center
+    font-family: text-font
+    h1
+        margin: 16px 0 0
+        font-family: title-font
+        font-size: 84px
+        line-height: 1.1
+        letter-spacing: 0.12em
+        color: #eaf7f1
+        text-shadow: 0 2px 0 #0a2a20, 0 8px 24px rgba(0, 0, 0, 0.6),
+                     0 0 40px rgba(46, 204, 143, 0.25)
+        img
+            width: 600px
+            filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5))
+    .version
+        font-family: defen-font
+        font-size: 24px
+        color: var(--gold)
+    .loading
+        margin: 8px auto
+        color: #9fb8ac
+        font-family: menu-font
+        font-size: 16px
+        animation: blink-text 2s infinite
+    .rounds-option
+        margin: 18px auto 0
+        font-family: menu-font
+        font-size: 16px
+        color: #cfe5da
+        label
+            margin-right: 10px
+        select
+            padding: 6px 12px
+            border: 1px solid rgba(232, 193, 90, 0.4)
+            border-radius: 8px
+            background: rgba(16, 44, 34, 0.9)
+            color: #eaf7f1
+            font-family: menu-font
+            font-size: 15px
+            cursor: pointer
+            outline: none
+            &:focus
+                border-color: var(--gold)
+    .start
+        margin: 20px auto
+        font-family: text-font
+        width: 160px
+        padding: 10px 4px
+        border-radius: 10px
+        border: none
+        font-size: 20px
+        letter-spacing: 0.2em
+        color: white
+        background: linear-gradient(180deg, var(--jade-light), var(--jade))
+        box-shadow: 0 4px 14px rgba(46, 204, 143, 0.35), inset 0 1px 0 rgba(255,255,255,0.25)
+        cursor: pointer
+        transition: transform 160ms var(--ease-out), box-shadow 200ms ease-out,
+                    filter 200ms ease-out
+        &:hover
+        &:focus
+            filter: brightness(1.08)
+            box-shadow: 0 6px 20px rgba(46, 204, 143, 0.5), inset 0 1px 0 rgba(255,255,255,0.25)
+            outline: none
+        &:active
+            transform: scale(0.97)
+            box-shadow: 0 2px 8px rgba(46, 204, 143, 0.3)
+    .login
+        margin: 8px auto
+        form
+            margin: 0.5em
+        input[type="submit"]
+            cursor: pointer
+        form.local
+            input[name="name"]
+                width: 8em
+            input[type="submit"]
+                border: none
+                color: white
+                background: linear-gradient(180deg, var(--jade-light), var(--jade))
+        img
+            width: 1.2em
+            vertical-align: middle
+        form:not(.local)
+            input[type="submit"]
+                width: 120px
+                border: none
+                background: none
+                text-align: left
+                padding: 0

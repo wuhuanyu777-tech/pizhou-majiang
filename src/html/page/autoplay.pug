@@ -1,0 +1,23 @@
+- var page = 'autoplay'
+
+doctype html
+html(lang="zh-CN")
+  
+  head
+    include ../inc/meta
+
+    include ../inc/ogp
+    +ogp('邳州麻将: 自动对战', 'AIプレーヤーの無限麻雀地獄', 
+          'https://kobalab.net/majiang/img/game.png')
+
+    include ../inc/style
+    include ../inc/script
+  
+  body.title
+    include ../inc/loaderr
+    include ../inc/navi
+    include ../inc/title
+    include ../inc/loaddata
+
+    include ../inc/board
+    .version ver. #{version}
