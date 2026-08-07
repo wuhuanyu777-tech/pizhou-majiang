@@ -11,12 +11,12 @@
         <meta property="og:image" content="https://kobalab.net/majiang/img/netplay.png">
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="apple-touch-icon" type="image/png" href="img/icon.png">
-    <link rel="stylesheet" type="text/css" href="css/majiang-1.2.8.css">
+    <link rel="stylesheet" type="text/css" href="css/majiang-1.2.32.css">
     <script src="server/socket.io/socket.io.js" defer></script>
-    <script src="js/majiang-1.2.8.js" defer></script>
-    <script src="js/netplay-1.2.8.js" defer></script>
+    <script src="js/majiang-1.2.32.js" defer></script>
+    <script src="js/netplay-1.2.32.js" defer></script>
   </head>
-  <body class="title">
+  <body class="title page-netplay">
     <div id="loaderr" style="display: none">
       <p>
         プログラムのロードでエラーが発生しました。
@@ -46,22 +46,15 @@
       <li><a href="https://github.com/kobalab/Majiang" target="_blank">GitHub</a></li>
     </ul>
     <div id="title">
-      <h1>邳州麻将</h1>
-      <div>网络对战</div>
-      <div class="version">ver. 1.2.8</div>
+      <h1><img src="img/logo.png" alt="邳州麻将">邳州麻将</h1>
+      <div class="version">ver. 1.2.32</div>
       <div class="loading">Loading data...</div>
       <div class="start hide" tabindex="0" role="button">开始游戏</div>
       <div class="login hide">
         <form class="local" method="POST" action="server/auth/">
           <input name="name" placeholder="玩家名">
           <input name="passwd" value="*" type="hidden">
-          <input type="submit" value="注册">
-        </form>
-        <form class="hatena" method="POST" action="server/auth/hatena"><img src="https://www.hatena.ne.jp/p/images/favicon.ico">
-          <input type="submit" value="Hatena登录">
-        </form>
-        <form class="google" method="POST" action="server/auth/google"><img src="https://www.google.com/favicon.ico">
-          <input type="submit" value="Google登录">
+          <input type="submit" value="登录">
         </form>
       </div>
     </div>
@@ -119,21 +112,24 @@
       <audio data-name="beep" src="audio/beep.wav" volume="0.2" preload></audio>
     </div>
     <div id="file">
-      <h1><img src="img/logo.png" alt="邳州麻将"> 网络对战
+      <h1><img src="img/logo.png" alt="邳州麻将">
       </h1>
-      <div class="version">ver. 1.2.8</div>
+      <div class="version">ver. 1.2.32</div>
       <div class="file hide">
         <div class="error hide"></div>
-        <div class="netplay"><img src="img/icon.png" title="guest"><span class="name"></span>
-          <form class="room">
-            <input name="room_no" placeholder="ルーム">
-            <input type="submit" value="入室">
-          </form>
-          <form class="room">
-            <input type="submit" value="ルーム作成">
-          </form>
+        <div class="netplay">
+          <div class="player-card"><img src="img/icon.png" title="guest"><span class="name"></span></div>
+          <div class="room-actions">
+            <form class="room join">
+              <input name="room_no" placeholder="输入房间号">
+              <input type="submit" value="加入房间">
+            </form>
+            <form class="room create">
+              <input type="submit" value="创建房间">
+            </form>
+          </div>
           <form class="logout" method="POST" action="server/logout">
-            <input type="submit" value="ログアウト">
+            <input type="submit" value="退出登录">
           </form>
         </div>
         <div class="button"><a class="stat"><img src="img/icon-dotlist.png">牌譜集計</a>
@@ -157,7 +153,7 @@
     </div>
     <div id="stat">
       <h1><img src="img/logo.png" alt="邳州麻将"> 牌譜集計</h1>
-      <div class="version">ver. 1.2.8</div>
+      <div class="version">ver. 1.2.32</div>
       <div class="stat">
         <div>
           <div class="button">
@@ -206,19 +202,26 @@
     </div>
     <div id="room">
       <h1><img src="img/logo.png" alt="邳州麻将"> 网络对战</h1>
-      <div class="version">ver. 1.2.8</div>
-      <form>ルーム
-        <input name="room_no" value="" disabled>
+      <div class="version">ver. 1.2.32</div>
+      <form>
+        <div class="room-head">
+          <label>房间号</label>
+          <input name="room_no" value="" disabled>
+          <p class="room-status"></p>
+          <input type="button" name="quit" value="退出房间">
+        </div>
         <ul class="room">
           <li class="user"><img src="img/icon.png"><span class="name"></span>
-            <input class="hide" type="button" name="quit" value="退室">
+            <input class="hide" type="button" name="quit" value="退出房间">
           </li>
         </ul>
-        <select name="rule">
-          <option value="">邳州麻将ルール</option>
-        </select>
-        <input name="timer" placeholder="持ち時間">
-        <input type="submit" value="対局開始">
+        <div class="room-controls">
+          <select name="rule">
+            <option value="">邳州麻将规则</option>
+          </select>
+          <input name="timer" placeholder="限时（分钟）">
+          <input type="submit" value="开始对局">
+        </div>
       </form>
     </div>
     <div id="space"></div>
@@ -426,6 +429,6 @@
       </div>
       <div class="download hide"><a><img src="img/icon-download-alt.png">牌譜保存</a></div>
     </div>
-    <div class="version">ver. 1.2.8</div>
+    <div class="version">ver. 1.2.32</div>
   </body>
 </html>

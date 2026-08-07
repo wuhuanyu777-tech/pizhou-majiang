@@ -5,14 +5,18 @@
   .version ver. #{version}
   
   form
-    | ルーム
-    input(name="room_no" value="" disabled)
+    .room-head
+      label 房间号
+      input(name="room_no" value="" disabled)
+      p.room-status
+      input(type="button" name="quit" value="退出房间")
     ul.room
       li.user
         img(src="img/icon.png")
         span.name
-        input.hide(type="button" name="quit" value="退室")
-    select(name="rule")
-      option(value="") 邳州麻将ルール
-    input(name="timer" placeholder="持ち時間")
-    input(type="submit" value="対局開始")
+        input.hide(type="button" name="quit" value="退出房间")
+    .room-controls
+      select(name="rule")
+        option(value="") 邳州麻将规则
+      input(name="timer" placeholder="限时（分钟）")
+      input(type="submit" value="开始对局")

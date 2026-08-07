@@ -10,7 +10,8 @@ const Majiang = {
 
 class Shan {
     constructor(baopai) {
-        this.paishu = 136 - 13 * 4 - 14;
+        // 邳州麻将 120 张牌（原 136-52-14=70 是日麻残留算法）
+        this.paishu = 120;
         this.baopai = [].concat(baopai||[]);
         this.fubaopai;
     }
@@ -22,6 +23,24 @@ module.exports = class Board {
 
     constructor(kaiju) {
         if (kaiju) this.kaiju(kaiju);
+        else {
+            // 无 kaiju 时也初始化字段，避免 UI 视图（如 Score）构造时
+            // 访问 undefined 字段而抛异常（netplay 联机在收到 kaiju 前
+            // 就用 new Majiang.Board() 创建了模型）
+            this.title  = '';
+            this.player = [];
+            this.qijia  = 0;
+            this.zhuangfeng = 0;
+            this.jushu      = 0;
+            this.changbang  = 0;
+            this.lizhibang  = 0;
+            this.defen      = [];
+            this.shan       = null;
+            this.shoupai    = [];
+            this.he         = [];
+            this.player_id  = [0,1,2,3];
+            this.lunban     = -1;
+        }
     }
 
     kaiju(kaiju) {

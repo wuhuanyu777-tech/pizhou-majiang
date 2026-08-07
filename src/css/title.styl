@@ -34,8 +34,17 @@ body.title
         text-shadow: 0 2px 0 #0a2a20, 0 8px 24px rgba(0, 0, 0, 0.6),
                      0 0 40px rgba(46, 204, 143, 0.25)
         img
-            width: 600px
+            display: block
+            height: 72px
+            width: auto
+            max-width: 100%
+            margin: 0 auto 8px
             filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5))
+    /* netplay 标题页用小尺寸 logo 且居中 */
+    body.title.page-netplay & h1 img
+        height: 40px
+        width: auto
+        margin: 0 auto 8px
     .version
         font-family: defen-font
         font-size: 24px
@@ -88,6 +97,30 @@ body.title
         &:active
             transform: scale(0.97)
             box-shadow: 0 2px 8px rgba(46, 204, 143, 0.3)
+    .netplay-link
+        display: block
+        margin: 6px auto 20px
+        font-family: text-font
+        width: 160px
+        padding: 10px 4px
+        border-radius: 10px
+        font-size: 20px
+        letter-spacing: 0.2em
+        text-align: center
+        text-decoration: none
+        color: white
+        background: linear-gradient(180deg, #f0d27a, #e8c15a)
+        box-shadow: 0 4px 14px rgba(232, 193, 90, 0.35), inset 0 1px 0 rgba(255,255,255,0.25)
+        cursor: pointer
+        transition: transform 160ms var(--ease-out), box-shadow 200ms ease-out,
+                    filter 200ms ease-out
+        &:hover
+            filter: brightness(1.08)
+            box-shadow: 0 6px 20px rgba(232, 193, 90, 0.5), inset 0 1px 0 rgba(255,255,255,0.25)
+            outline: none
+        &:active
+            transform: scale(0.97)
+            box-shadow: 0 2px 8px rgba(232, 193, 90, 0.3)
     .login
         margin: 8px auto
         form

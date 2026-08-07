@@ -170,12 +170,10 @@ module.exports = class Player extends Majiang.Player {
 
     action_kaiju(kaiju) {
         if (! this._view) this.callback();
-        $('.kaiju', this._node.root).off('click')
-                                    .on('click.kaiju', ()=>this.callback());
-        setTimeout(()=>{
-            setSelector($('.kaiju', this._node.root), 'kaiju',
-                        { touch: false });
-        }, 800);
+        $('.kaiju', this._node.root).off('click');
+        // 开局画面短暂展示后自动继续（无需点击），否则 4 名真人若都不点击，
+        // 服务器会一直等待回复而无法发牌
+        setTimeout(()=> this.callback(), 800);
     }
 
     action_qipai(qipai) { this.callback() }

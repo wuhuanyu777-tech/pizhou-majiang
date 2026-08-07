@@ -1,7 +1,9 @@
 body.file
-    color: black
-    background: white
-    margin: 0 10px 15px
+    color: #eaf7f1
+    background: linear-gradient(160deg, #12493a 0%, #0d3b2e 55%, #09281f 100%)
+    min-height: 100vh
+    margin: 0
+    padding: 20px 10px 30px
     #navi
         margin: 0
     #file
@@ -12,12 +14,21 @@ body.file
 #file
 #room
     display: none
+body.file #file
+    display: block
+body.title #room
+body.file #room
+    display: none
+body.room #room
+body.board #room
+    display: block
     font-size: 14px
     font-family: menu-font
     h1
         font-size: 24px
         margin-top: 0
-        border-bottom: solid 2px black
+        border-bottom: solid 2px rgba(232, 193, 90, 0.3)
+        color: #eaf7f1
         img
             height: 36px
             vertical-align: bottom
@@ -26,26 +37,37 @@ body.file
         font-size: 16px
         font-family: defen-font
         text-align: right
+        color: #6f8f80
 #file
+    max-width: 760px
+    margin: 0 auto
+    h1
+        padding-bottom: 8px
+        margin-bottom: 16px
+        text-align: center
     .file
-        margin: 10px 0
+        margin: 14px 0
         .row
-            transition: opacity 0.4s ease-out
-            border: solid 1px #ccc
-            margin: 2px 0px
-            border-radius: 4px
-            padding: 8px
+            transition: opacity 0.4s ease-out, border-color 200ms ease-out
+            border: 1px solid rgba(255, 255, 255, 0.08)
+            margin: 8px 0px
+            border-radius: 12px
+            padding: 12px 14px
             display: flex
             flex-direction: row-reverse
+            background: rgba(16, 44, 34, 0.75)
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25)
             .content
                 flex-grow: 1
                 margin-right: 10px
                 .title
                     font-family: menu-font
                     font-size: 114%
+                    color: #eaf7f1
                 .player
                     font-family: text-font
                     font-size: 107%
+                    color: #9fb8ac
             .button
                 display: inline-flex
                 align-items: flex-start
@@ -54,12 +76,13 @@ body.file
         a
         label.upload
             display: inline-block
-            padding: 6px 10px
-            background: #999
-            border-radius: 5px
+            padding: 6px 12px
+            background: rgba(255, 255, 255, 0.1)
+            border-radius: 6px
+            border: 1px solid rgba(255, 255, 255, 0.15)
             white-space: nowrap
             cursor: pointer
-            color: white
+            color: #eaf7f1
             line-height: 1em
             text-decoration: none
             img
@@ -69,11 +92,16 @@ body.file
             input
                 display: none
             &.start
-                background: blue
+                background: linear-gradient(180deg, #2ecc8f, #1d9e6c)
+                border: none
+                color: white
+                font-size: 15px
+                padding: 9px 18px
+                border-radius: 8px
             &:hover
-                background: #ccc
+                background: rgba(255, 255, 255, 0.2)
             &.delete:hover
-                background: red
+                background: #c0392b
         .move
             display: inline-block
             padding: 3px 0
@@ -87,43 +115,115 @@ body.file
             float: right
             input[name="url"]
                 width: 270px
+                background: rgba(16, 44, 34, 0.9)
+                color: #eaf7f1
+                border: 1px solid rgba(255, 255, 255, 0.15)
+                border-radius: 6px
+                padding: 5px 8px
             input[type="image"]
                 height: 22px
                 opacity: 0.6
         .netplay
-            display: inline-block
-            img
-                width: 2em
-                vertical-align: middle
-                border-radius: 50%
-                margin-right: 0.5em
-            .name
-                display: inline-block
-                vertical-align: middle
-                font-size: 120%
-                width: 8em
-                white-space: nowrap
-                overflow: hidden
-                text-overflow: ellipsis
+            display: flex
+            align-items: center
+            flex-wrap: wrap
+            gap: 14px
+            background: rgba(8, 24, 19, 0.8)
+            border: 1px solid rgba(232, 193, 90, 0.25)
+            border-radius: 16px
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4)
+            padding: 18px 20px
+            margin-bottom: 6px
+            .player-card
+                display: flex
+                align-items: center
+                gap: 10px
+                min-width: 120px
+                img
+                    width: 40px
+                    height: 40px
+                    border-radius: 50%
+                    border: 2px solid rgba(232, 193, 90, 0.5)
+                    margin-right: 0
+                .name
+                    display: inline-block
+                    font-size: 17px
+                    color: #eaf7f1
+                    max-width: 8em
+                    white-space: nowrap
+                    overflow: hidden
+                    text-overflow: ellipsis
+            .room-actions
+                display: flex
+                flex-wrap: wrap
+                gap: 10px
+                flex: 1
+                justify-content: flex-end
             form
-                margin-right: 0.5em
-                display: inline-block
+                margin: 0
+                display: inline-flex
+                align-items: center
+                gap: 6px
                 input[name="room_no"]
-                    width: 3em
+                    width: 9em
+                    padding: 9px 12px
+                    border-radius: 8px
+                    border: 1px solid rgba(232, 193, 90, 0.35)
+                    background: rgba(16, 44, 34, 0.9)
+                    color: #eaf7f1
+                    font-family: menu-font
+                    font-size: 14px
+                    &::placeholder
+                        color: #6f8f80
+                input[type="submit"]
+                    background: linear-gradient(180deg, #2ecc8f, #1d9e6c)
+                    color: white
+                    border: none
+                    border-radius: 8px
+                    padding: 10px 18px
+                    font-size: 15px
+                    font-family: text-font
+                    letter-spacing: 0.1em
+                    cursor: pointer
+                    transition: transform 160ms ease-out, filter 200ms ease-out
+                    &:hover
+                        filter: brightness(1.08)
+                    &:active
+                        transform: scale(0.97)
+                &.create
+                    input[type="submit"]
+                        background: linear-gradient(180deg, #f0d27a, #e8c15a)
+                        color: #09281f
+                        font-weight: bold
+                        box-shadow: 0 4px 14px rgba(232, 193, 90, 0.3)
+            form.logout
+                input[type="submit"]
+                    background: transparent
+                    color: #9fb8ac
+                    border: 1px solid rgba(255, 255, 255, 0.15)
+                    border-radius: 8px
+                    padding: 9px 14px
+                    font-size: 13px
+                    cursor: pointer
+                    font-family: menu-font
+                    &:hover
+                        color: #f0d27a
+                        border-color: rgba(232, 193, 90, 0.4)
         .error
         .loading
             transition: opacity 0.5s ease-out
-            margin: 2px 0px
-            border-radius: 5px
-            border: solid 1px #f99
-            padding: 4px 1em
+            margin: 10px 0
+            border-radius: 10px
+            border: 1px solid #f99
+            padding: 8px 1em
             font-family: menu-font
+            background: rgba(120, 20, 20, 0.35)
         .error
-            color: red
-            background: #fdd
+            color: #ff9b9b
+            border-color: rgba(255, 120, 120, 0.4)
         .loading
-            color: green
-            background: #cfc
-            border: solid 1px #090
+            color: #7dffb8
+            background: rgba(20, 90, 60, 0.35)
+            border-color: rgba(80, 200, 140, 0.4)
             .blink
                 animation: blink-text 2s infinite

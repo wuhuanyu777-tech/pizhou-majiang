@@ -13,7 +13,9 @@ const summary    = require('./summary');
 
 const { hide, show, fadeIn, fadeOut } = require('./fadein');
 
-const class_name = ['main','xiajia','duimian','shangjia'];
+// 方位映射：0=自己(main/下) 1=下家 2=对家(上) 3=上家
+// 南北互换：南(下家)显示在左(shangjia位)，北(上家)显示在右(xiajia位)
+const class_name = ['main','shangjia','duimian','xiajia'];
 const feng_hanzi = ['我','下家','对家','上家'];
 const menfeng_hanzi = ['东','南','西','北'];     // 座位 l 的门风
 const shu_hanzi  = ['一','二','三','四'];

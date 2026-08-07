@@ -7,6 +7,6 @@
 global.Majiang = require('@kobalab/majiang-core');
 global.Majiang.AI = require('@kobalab/majiang-ai');
 global.Majiang.UI = require('@kobalab/majiang-ui');
-global.Majiang.VERSION = '1.2.3';
+global.Majiang.VERSION = '1.2.32';
 global.jQuery  = require('jquery');
 global.$ = jQuery;
