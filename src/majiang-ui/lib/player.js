@@ -302,12 +302,21 @@ module.exports = class Player extends Majiang.Player {
         if (fulou.l != this._menfeng) return this.callback();
         if (fulou.m.match(/^[mpsz]\d{4}/)) return this.callback();
 
+        // 修复：必须先清掉吃/碰按钮面板的 _show_button 状态（action_dapai 时 set_button 留下的），
+        // 否则 show_button 会走"显示按钮面板等玩家点取消"分支，select_dapai（选牌出牌）被推迟，
+        // 玩家点手牌无反应 → 对局卡死（实测点击"吃"后 he 不再变化）。
+        this.clear_button();
+
         this.show_button(()=>this.select_dapai());
     }
 
     action_gang(gang) {
         if (gang.l == this._menfeng) return this.callback();
         if (gang.m.match(/^[mpsz]\d{4}$/)) return this.callback();
+
+        // 修复：与 action_fulou 同理，先清掉残留的 _show_button，
+        // 否则没有抢杠胡按钮时 show_button 不立即 callback，等玩家点取消 → 卡死
+        this.clear_button();
 
         let d = ['','-','=','+'][(4 + this._model.lunban - this._menfeng) % 4];
         let p = gang.m[0] + gang.m.slice(-1) + d;
