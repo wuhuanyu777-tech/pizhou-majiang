@@ -21,6 +21,7 @@ const PAI_MAP = {
 const ACTION_MAP = {
     chi:   ['chi'],
     peng:  ['peng'],
+    kan:   ['kanzi'],                    // 坎（暗刻）
     gang:  ['kanzi', 'zikai'],     // 杠：坎子/自开 随机
     rong:  ['hu'],
     zimo:  ['zimo'],

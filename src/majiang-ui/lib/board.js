@@ -217,6 +217,8 @@ module.exports = class Board {
         if (data.zimo) {
             this._view.shan.update();
             this._view.shoupai[data.zimo.l].redraw().adjust();
+            // 坎牌（暗刻）：zimo.kan = true 时播报"坎"
+            if (this.sound_on && data.zimo.kan) voice.action('kan');
         }
         else if (data.dapai) {
             this._view.shoupai[data.dapai.l].dapai(data.dapai.p);
