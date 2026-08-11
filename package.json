@@ -1,6 +1,6 @@
 {
   "name": "pizhou-majiang",
-  "version": "1.2.32",
+  "version": "1.2.33",
   "description": "邳州麻将（查胡麻将）HTML5 游戏",
   "private": true,
   "scripts": {
