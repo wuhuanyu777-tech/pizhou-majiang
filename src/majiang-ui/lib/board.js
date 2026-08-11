@@ -10,6 +10,7 @@ const Shan       = require('./shan');
 const He         = require('./he');
 const HuleDialog = require('./dialog');
 const summary    = require('./summary');
+const voice      = require('./voice');
 
 const { hide, show, fadeIn, fadeOut } = require('./fadein');
 
@@ -222,6 +223,8 @@ module.exports = class Board {
             if (this.sound_on) {
                 this._audio.dapai[data.dapai.l].currentTime = 0;
                 this._audio.dapai[data.dapai.l].play();
+                // 邳州报牌：出什么牌播什么语音
+                voice.pai(data.dapai.p);
             }
             this._view.he[data.dapai.l].dapai(data.dapai.p);
             this._lizhi = data.dapai.p.slice(-1) == '*';
@@ -298,6 +301,8 @@ module.exports = class Board {
         if (this.sound_on) {
             this._audio[name][l].currentTime = 0;
             this._audio[name][l].play();
+            // 邳州动作播报：吃/碰/杠(坎子)/胡/自摸
+            voice.action(name);
         }
         show(this._view.say[l].text(say_text[name]));
         this._say[l] = name;
