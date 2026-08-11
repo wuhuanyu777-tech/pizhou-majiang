@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="apple-touch-icon" type="image/png" href="img/icon.png">
     <link rel="stylesheet" type="text/css" href="css/majiang-1.2.32.css">
-    <script src="server/socket.io/socket.io.js" defer></script>
+    <script src="socket.io/socket.io.js" defer></script>
     <script src="js/majiang-1.2.32.js" defer></script>
     <script src="js/netplay-1.2.32.js" defer></script>
   </head>
@@ -51,7 +51,7 @@
       <div class="loading">Loading data...</div>
       <div class="start hide" tabindex="0" role="button">开始游戏</div>
       <div class="login hide">
-        <form class="local" method="POST" action="server/auth/">
+        <form class="local" method="POST" action="auth/">
           <input name="name" placeholder="玩家名">
           <input name="passwd" value="*" type="hidden">
           <input type="submit" value="登录">
@@ -128,7 +128,7 @@
               <input type="submit" value="创建房间">
             </form>
           </div>
-          <form class="logout" method="POST" action="server/logout">
+          <form class="logout" method="POST" action="logout">
             <input type="submit" value="退出登录">
           </form>
         </div>

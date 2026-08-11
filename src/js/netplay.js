@@ -93,7 +93,7 @@ $(function(){
             }
             localStorage.setItem('Majiang.autoLogin.t', Date.now());
             const name = '玩家' + Math.floor(Math.random() * 9000 + 1000);
-            fetch('server/auth/', {
+            fetch('auth/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams({ name, passwd: '*' }),

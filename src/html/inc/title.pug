@@ -13,7 +13,7 @@
     .start.hide(tabindex="0" role="button") 开始游戏
   if page == 'netplay'
     .login.hide
-      form.local(method="POST" action="server/auth/")
+      form.local(method="POST" action="auth/")
         input(name="name" placeholder="玩家名")
         input(name="passwd" value="*" type="hidden")
         input(type="submit" value="登录")
