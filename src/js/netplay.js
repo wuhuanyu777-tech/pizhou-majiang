@@ -65,7 +65,8 @@ $(function(){
     function init() {
 
         dbg('init(): 连接 socket.io...');
-        sock = io('/', { path: `${base}/server/socket.io/`});
+        // 服务器以 -b / 启动（docroot=../dist），socket.io 挂在根路径
+        sock = io('/', { path: '/socket.io/' });
         sock.on('connect', ()=> dbg('socket connected'));
         sock.on('HELLO', hello);
         sock.on('ROOM', room);
