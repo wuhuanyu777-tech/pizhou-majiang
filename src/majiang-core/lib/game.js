@@ -225,7 +225,7 @@ module.exports = class Game {
             model.player_id[l] = (model.qijia + l) % 4;
         }
         // 庄家（座位 jushu）先摸牌：lunban 先置为庄家的上一家，zimo() 会 +1 到庄家
-        model.lunban = (model.jushu + 3) % 4;
+        model.lunban = (5 - model.jushu) % 4;
 
         this._diyizimo = true;
         this._qipai_gang = [0,0,0,0];       // 起手杠（塌牌）标记
@@ -276,7 +276,7 @@ module.exports = class Game {
 
         let model = this._model;
 
-        model.lunban = (model.lunban + 1) % 4;
+        model.lunban = (model.lunban + 3) % 4;
 
         let zimo = model.shan.zimo();
         model.shoupai[model.lunban].zimo(zimo);
@@ -343,7 +343,7 @@ module.exports = class Game {
         model.he[model.lunban].fulou(fulou);
 
         let d = fulou.match(/[\+\=\-]/);
-        model.lunban = (model.lunban + '_-=+'.indexOf(d)) % 4;
+        model.lunban = (model.lunban + (4 - '_-=+'.indexOf(d)) % 4) % 4;
 
         model.shoupai[model.lunban].fulou(fulou);
 
@@ -473,7 +473,7 @@ module.exports = class Game {
                      : (this._hule_option == 'qianggang'
                             ? this._gang[0] + this._gang.slice(-1)
                             : this._dapai.slice(0,2)
-                       ) + '_+=-'[(4 + model.lunban - menfeng) % 4];
+                       ) + '_-=+'[(4 + model.lunban - menfeng) % 4];
         let shoupai  = model.shoupai[menfeng].clone();
         let fubaopai = null;
 
@@ -483,7 +483,7 @@ module.exports = class Game {
             rule:           this._rule,
             zhuangfeng:     model.zhuangfeng,
             menfeng:        menfeng,
-            zhuang_seat:    model.jushu,            // 本局庄家座位（0东1南2西3北）
+            zhuang_seat:    (4 - model.jushu) % 4,            // 本局庄家座位（0东1南2西3北）
             hupai: {
                 qipai_gang: this._qipai_gang[menfeng] && ! this._has_dapai[menfeng],
                 qianggang:  this._hule_option == 'qianggang',
@@ -505,7 +505,7 @@ module.exports = class Game {
 
         // 庄家胡牌连庄；塌牌（炸）不连庄（权威规则：炸不连庄）
         let is_tapai = this._qipai_gang[menfeng] && ! this._has_dapai[menfeng];
-        if (menfeng == model.jushu && ! is_tapai) this._lianzhuang = true;
+        if (menfeng == (4 - model.jushu) % 4 && ! is_tapai) this._lianzhuang = true;
         if (this._rule['場数'] == 0) this._lianzhuang = false;
         this._fenpei = hule.fenpei;
 
@@ -733,7 +733,7 @@ module.exports = class Game {
         let model = this._model;
 
         for (let i = 1; i < 4; i++) {
-            let l = (model.lunban + i) % 4;
+            let l = (model.lunban + 4 - i) % 4;
             let reply = this.get_reply(l);
             if (reply.hule && this.allow_hule(l)) {
                 this.say('rong', l);
@@ -750,7 +750,7 @@ module.exports = class Game {
         }
 
         // 起手同牌流局：第一巡各家打出同一张牌（第4家打完时检查）
-        if (this._diyizimo && model.lunban == (model.jushu + 3) % 4) {
+        if (this._diyizimo && model.lunban == (5 - model.jushu) % 4) {
             this._diyizimo = false;
             if (this._qipai_dou) {
                 let shoupai = model.shoupai.map(s=>s.toString());
@@ -769,7 +769,7 @@ module.exports = class Game {
         }
 
         for (let i = 1; i < 4; i++) {
-            let l = (model.lunban + i) % 4;
+            let l = (model.lunban + 4 - i) % 4;
             let reply = this.get_reply(l);
             if (reply.fulou) {
                 let m = reply.fulou.replace(/0/g,'5');
@@ -787,7 +787,7 @@ module.exports = class Game {
                 }
             }
         }
-        let l = (model.lunban + 1) % 4;
+        let l = (model.lunban + 3) % 4;
         let reply = this.get_reply(l);
         if (reply.fulou) {
             if (this.get_chi_mianzi(l).find(m => m == reply.fulou)) {
@@ -827,7 +827,7 @@ module.exports = class Game {
         }
 
         for (let i = 1; i < 4; i++) {
-            let l = (model.lunban + i) % 4;
+            let l = (model.lunban + 4 - i) % 4;
             let reply = this.get_reply(l);
             if (reply.hule && this.allow_hule(l)) {
                 this.say('rong', l);
@@ -884,14 +884,14 @@ module.exports = class Game {
 
     get_chi_mianzi(l) {
         let model = this._model;
-        let d = '_+=-'[(4 + model.lunban - l) % 4];
+        let d = '_-=+'[(4 + model.lunban - l) % 4];
         return Game.get_chi_mianzi(this._rule, model.shoupai[l],
                                    this._dapai + d, model.shan.paishu);
     }
 
     get_peng_mianzi(l) {
         let model = this._model;
-        let d = '_+=-'[(4 + model.lunban - l) % 4];
+        let d = '_-=+'[(4 + model.lunban - l) % 4];
         return Game.get_peng_mianzi(this._rule, model.shoupai[l],
                                     this._dapai + d, model.shan.paishu);
     }
@@ -904,7 +904,7 @@ module.exports = class Game {
                                         this._n_gang.reduce((x, y)=> x + y));
         }
         else {
-            let d = '_+=-'[(4 + model.lunban - l) % 4];
+            let d = '_-=+'[(4 + model.lunban - l) % 4];
             return Game.get_gang_mianzi(this._rule, model.shoupai[l],
                                         this._dapai + d, model.shan.paishu,
                                         this._n_gang.reduce((x, y)=> x + y));
@@ -926,7 +926,7 @@ module.exports = class Game {
             let p = (this._status == 'gang'
                         ? this._gang[0] + this._gang.slice(-1)
                         : this._dapai
-                    ) + '_+=-'[(4 + model.lunban - l) % 4];
+                    ) + '_-=+'[(4 + model.lunban - l) % 4];
             let hupai = {
                 qipai_gang: this._qipai_gang[l] && ! this._has_dapai[l]
             };

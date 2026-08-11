@@ -12,7 +12,7 @@ const { hide, show, fadeIn, fadeOut } = Majiang.UI.Util;
 const preset = require('./conf/rule.json');
 const view = {};
 
-const feng_hanzi = ['東','北','西','南'];
+const feng_hanzi = ['東','南','西','北'];
 
 let player, next_exam, miss_exams, stat;
 
