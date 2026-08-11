@@ -34,6 +34,7 @@
     "@kobalab/majiang-ai": "file:src/majiang-ai",
     "@kobalab/majiang-core": "file:src/majiang-core",
     "@kobalab/majiang-ui": "file:src/majiang-ui",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "pizhou-majiang": "file:"
   }
 }

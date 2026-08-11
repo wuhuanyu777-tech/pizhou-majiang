@@ -2,7 +2,7 @@
  *  Majiang.Shan  (邳州麻将版)
  *
  *  120张牌：条(m) 筒(p) 万(s) 1-9 各4张 + 中发白(z5/z6/z7) 各4张
- *  无风牌、无赤牌、无宝牌。牌山保留 14 张底牌（7堆），摸完即流局。
+ *  无风牌、无赤牌、无宝牌。牌山保留 16 张底牌（4人局，剩<16张流局），摸完即流局。
  */
 "use strict";
 
@@ -62,7 +62,7 @@ module.exports = class Shan {
 
     close() { this._closed = true; return this }
 
-    get paishu() { return this._pai.length - 14 }
+    get paishu() { return this._pai.length - 16 }
 
     get baopai() { return [] }
 

@@ -503,7 +503,9 @@ module.exports = class Game {
 
         let hule = Majiang.Util.hule(shoupai, rongpai, param);
 
-        if (menfeng == model.jushu) this._lianzhuang = true;    // 庄家胡牌连庄
+        // 庄家胡牌连庄；塌牌（炸）不连庄（权威规则：炸不连庄）
+        let is_tapai = this._qipai_gang[menfeng] && ! this._has_dapai[menfeng];
+        if (menfeng == model.jushu && ! is_tapai) this._lianzhuang = true;
         if (this._rule['場数'] == 0) this._lianzhuang = false;
         this._fenpei = hule.fenpei;
 

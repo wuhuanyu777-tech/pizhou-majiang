@@ -277,9 +277,9 @@ function get_defen(score, param, rongpai) {
     let hu_shu, yao_shu, V_huler;
 
     if (qipai_gang) {
-        // 塌牌：荤10分 / 幺30分，庄×2
+        // 塌牌（炸）：2-8 炸 10 分，幺九炸 40 分；庄闲都不翻倍（炸不连庄见 game.js）
         let has_yaojiu = hand_has_yaojiu(param);
-        V_huler = (has_yaojiu ? 30 : 10) * (zhuang ? 2 : 1);
+        V_huler = has_yaojiu ? 40 : 10;
         hu_shu  = V_huler;
         yao_shu = 0;
     }
@@ -414,14 +414,18 @@ function cha_hu_fenpei(V, param, rongpai) {
 }
 
 function hand_has_yaojiu(param) {
-    // 塌牌时判断手牌是否含幺九（1、9、中发白）
+    // 塌牌时判断起手杠（炸）的牌是否幺九（1、9、中发白）
+    // 权威规则：起手杠按杠的那张牌算 —— 2-8 炸 10 分，幺九炸 40 分
     let shoupai = param._shoupai;
     if (! shoupai) return false;
     for (let s of ['m','p','s']) {
-        if (shoupai._bingpai[s][1] > 0 || shoupai._bingpai[s][9] > 0) return true;
+        for (let n = 1; n <= 9; n++) {
+            if (shoupai._bingpai[s][n] >= 4
+                    && (n == 1 || n == 9)) return true;
+        }
     }
     for (let n = 5; n <= 7; n++) {
-        if (shoupai._bingpai.z[n] > 0) return true;
+        if (shoupai._bingpai.z[n] >= 4) return true;
     }
     return false;
 }
