@@ -223,9 +223,7 @@ module.exports = class Board {
         else if (data.dapai) {
             this._view.shoupai[data.dapai.l].dapai(data.dapai.p);
             if (this.sound_on) {
-                this._audio.dapai[data.dapai.l].currentTime = 0;
-                this._audio.dapai[data.dapai.l].play();
-                // 邳州报牌：出什么牌播什么语音
+                // 邳州报牌：出什么牌播什么语音（原 dahai11.wav 已去除，避免重复）
                 voice.pai(data.dapai.p);
             }
             this._view.he[data.dapai.l].dapai(data.dapai.p);
@@ -301,9 +299,7 @@ module.exports = class Board {
 
     say(name, l) {
         if (this.sound_on) {
-            this._audio[name][l].currentTime = 0;
-            this._audio[name][l].play();
-            // 邳州动作播报：吃/碰/杠(坎子)/胡/自摸
+            // 邳州动作播报（原 chii/pon/kan/ron/tsumo 音效已去除，避免重复）
             voice.action(name);
         }
         show(this._view.say[l].text(say_text[name]));
