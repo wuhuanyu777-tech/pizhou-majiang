@@ -95,7 +95,7 @@ function make_exam(player) {
                 if (player.select_hule(msg)) {
                     shan.close();
                     let rongpai
-                            = p + ['','+','=','-'][(4 + lunban - menfeng) % 4];
+                            = p + ['','-','=','+'][(4 + lunban - menfeng) % 4];
                     return {
                         shoupai:    player.shoupai,
                         rongpai:    rongpai,

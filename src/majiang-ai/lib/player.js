@@ -109,7 +109,7 @@ module.exports = class Player extends Majiang.Player {
         let rongpai;
         if (data) {
             if (data.m && data.m.match(/^[mpsz]\d{4}$/)) return false;
-            let d = ['','+','=','-']
+            let d = ['','-','=','+']
                         [(4 + this._model.lunban - this._menfeng) % 4];
             rongpai = data.m ? data.m[0] + data.m.slice(-1) + d
                              : data.p.slice(0,2) + d;
@@ -139,7 +139,7 @@ module.exports = class Player extends Majiang.Player {
         let n_xiangting = Majiang.Util.xiangting(this.shoupai);
         if (this._model.shoupai.find(s=>s.lizhi) && n_xiangting >= 3) return;
 
-        let d = ['','+','=','-'][(4 + this._model.lunban - this._menfeng) % 4];
+        let d = ['','-','=','+'][(4 + this._model.lunban - this._menfeng) % 4];
         let p = dapai.p.slice(0,2) + d;
 
         if (n_xiangting < 3) {
