@@ -129,10 +129,7 @@ module.exports = class Game {
     reply(id, reply) {
         this._reply[id] = reply || {};
         if (this._sync) return;
-        // 修复：空对象 {} 不算"已回复"——避免人类玩家未操作时被算 4 家全回复
-        // 触发 next 走兜底自动出牌（且此时 reply 是 {} 会让 reply_zimo 默认出最后一张）
-        let real = this._reply.filter(x => x && Object.keys(x).length > 0);
-        if (real.length < 4) return;
+        if (this._reply.filter(x=>x).length < 4) return;
         if (! this._timeout_id)
                 this._timeout_id = setTimeout(()=>this.next(), 0);
     }

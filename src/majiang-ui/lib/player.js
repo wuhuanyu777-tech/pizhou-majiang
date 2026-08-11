@@ -244,22 +244,6 @@ module.exports = class Player extends Majiang.Player {
         }
 
         this.show_button(()=>this.select_dapai());
-
-        // 兜底：单机模式下没有服务端 timer，玩家没操作会让对局卡住。
-        // 60 秒后若玩家仍未选牌，自动出第一张可出的牌（保留 _default_reply 优先）。
-        // 修复：第一张牌/庄家摸牌时，前端 select_dapai 可能未显示或被忽略，
-        // 导致服务端 timeout 后用空 reply 触发 next，进而 reply_zimo 兜底自动出最后一张。
-        // 此处用本地 timer 在合理时间窗口内兜底，避免"自动出牌"的突兀感。
-        if (! this._timer_id) {
-            this._fallback_timer = setTimeout(()=>{
-                if (this._default_reply) {
-                    this.callback(this._default_reply);
-                } else {
-                    let choices = this.get_dapai(this.shoupai);
-                    if (choices && choices.length) this.callback({ dapai: choices[0] });
-                }
-            }, 60000);
-        }
     }
 
     action_dapai(dapai) {
