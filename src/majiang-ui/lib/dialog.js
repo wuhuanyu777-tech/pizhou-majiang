@@ -98,7 +98,7 @@ module.exports = class HuleDialog {
 
     fenpei(fenpei) {
 
-        const feng_hanzi = ['東','南','西','北'];
+        const feng_hanzi = ['東','北','西','南'];
         const class_name = ['main','xiajia','duimian','shangjia'];
 
         $('.diff', this._node.fenpai).removeClass('plus minus');

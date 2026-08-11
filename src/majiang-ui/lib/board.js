@@ -17,7 +17,7 @@ const { hide, show, fadeIn, fadeOut } = require('./fadein');
 // 南北互换：南(下家)显示在左(shangjia位)，北(上家)显示在右(xiajia位)
 const class_name = ['main','shangjia','duimian','xiajia'];
 const feng_hanzi = ['我','下家','对家','上家'];
-const menfeng_hanzi = ['东','南','西','北'];     // 座位 l 的门风
+const menfeng_hanzi = ['东','北','西','南'];     // 座位 l 的门风
 const shu_hanzi  = ['一','二','三','四'];
 const dummy_name = ['我','下家','对家','上家'];
 
@@ -314,7 +314,7 @@ module.exports = class Board {
             let name = (this.dummy_name == null)
                             ? this._model.player[id].replace(/\n.*$/,'')
                             : dummy_name[(4 + id - this.dummy_name) % 4];
-            // 门风 = 玩家id相对起家的位置（0东 1南 2西 3北）
+            // 门风 = 玩家id相对起家的位置（0东 1北 2西 3南，逆时针）
             let menfeng = (id - this._model.qijia + 8) % 4;
             let pl = $(`.player .${c}`, this._view.kaiju);
             // 门风徽章：去掉东/南/西/北，仅起家（庄家）显示"庄"

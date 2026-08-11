@@ -449,7 +449,7 @@ module.exports = class PaipuEditor {
         const row = select.children().eq(0);
         select.empty();
         for (let i = 0; i < 16; i++) {
-            let name = ['東','南','西','北'][i >> 2]
+            let name = ['東','北','西','南'][i >> 2]
                      + ['一','二','三','四'][i % 4] + '局'
             let r = row.clone().text(name).attr('value', i);
             select.append(r);
@@ -539,7 +539,7 @@ module.exports = class PaipuEditor {
         for (let i = 0; i < this._paipu.log.length; i++) {
             let r = row.clone();
             let qipai = this._paipu.log[i][0].qipai;
-            $('.name', r).text(['東','南','西','北'][qipai.zhuangfeng]
+            $('.name', r).text(['東','北','西','南'][qipai.zhuangfeng]
                              + ['一','二','三','四'][qipai.jushu] + '局 '
                              + qipai.changbang + '本场');
             r.on('click', ()=>this.select_log(i));
@@ -650,7 +650,7 @@ module.exports = class PaipuEditor {
                 add_baopai(data.qipai.baopai, badpai(data.qipai.baopai));
                 for (let l = 0; l < 4; l++) {
                     $('.player .jia', paipu).eq(l)
-                            .text(['東','南','西','北'][l]);
+                            .text(['東','北','西','南'][l]);
                     let id = (this._paipu.qijia + data.qipai.jushu + l) % 4;
                     $('.player .name', paipu).eq(l)
                             .text(this._paipu.player[id].replace(/\n.*$/,''));
@@ -1066,7 +1066,7 @@ module.exports = class PaipuEditor {
                 else if (baojia != l)                continue;
 
                 let r = row.clone()
-                        .text(['東','南','西','北'][l] + ': '
+                        .text(['東','北','西','南'][l] + ': '
                             + player[player_id[l]].replace(/\n.*$/,''))
                         .val(l);
                 select.append(r);
