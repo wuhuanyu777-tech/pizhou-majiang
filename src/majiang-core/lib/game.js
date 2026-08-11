@@ -714,7 +714,12 @@ module.exports = class Game {
                     msg[l] = JSON.parse(JSON.stringify(
                                 { zimo: { l: model.lunban, p: '', kan: true } }));
                 }
-                return this.delay(()=>this.call_players('zimo', msg), 0);
+                return this.delay(()=>{
+                    this.call_players('zimo', msg, 0);
+                    // 通知前端更新画面并播报"坎"（必须同步 view，否则前端收不到）
+                    if (this._view) this._view.update(
+                        { zimo: { l: model.lunban, p: '', kan: true } });
+                }, 0);
             }
         }
         else if (reply.dapai) {
