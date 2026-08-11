@@ -38,13 +38,13 @@ function hule_of(s, opt = {}) {
     let h = hule_of('m123p456s789z777m55m5');
     check('平胡可胡', !!h, true);
     if (h) { check('平胡名称', h.hupai[0].name, '平胡');
-             check('平胡分值(闲)=15胡1幺=25', h.defen, 25); }
+             check('平胡分值(闲)=16胡1幺=26(将自摸2胡)', h.defen, 26); }
 }
 
 /* 3. 平胡（庄家）：胡数×2 */
 {
     let h = hule_of('m123p456s789z777m55m5', { menfeng: 0, zhuang_seat: 0 });
-    check('平胡分值(庄)=30胡1幺=40', h && h.defen, 40);
+    check('平胡分值(庄)=32胡1幺=42(将自摸2胡)', h && h.defen, 42);
 }
 
 /* 4. 飘荤（碰碰胡）：m111 p222 s333 p444 + m55 */
@@ -52,7 +52,7 @@ function hule_of(s, opt = {}) {
     let h = hule_of('m111p222s333p444m55m5');
     check('飘荤可胡', !!h, true);
     if (h) { check('飘荤名称', h.hupai[0].name, '飘荤');
-             check('飘荤分值=42胡1幺+90=142', h.defen, 142); }
+             check('飘荤分值=44胡1幺+90=144(将自摸2胡)', h.defen, 144); }
 }
 
 /* 5. 七对 */
@@ -78,7 +78,7 @@ function hule_of(s, opt = {}) {
 {
     let h = hule_of('m123p111s789m999m55');
     check('幺九坎可胡', !!h, true);
-    if (h) check('幺九坎分值=19胡2幺=39', h.defen, 39);
+    if (h) check('幺九坎分值=20胡2幺=40(将自摸2胡)', h.defen, 40);
 }
 
 /* 8. 非胡牌型 */

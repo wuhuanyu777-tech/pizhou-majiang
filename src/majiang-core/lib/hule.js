@@ -203,7 +203,7 @@ function mianzi_hu_yao(m, shoupai) {
  * 计算一种和牌形的胡数/幺数/牌型名
  * mianzi_list: 面子数组（一般形第0个为将牌，七对形全为对子）
  */
-function calc_score(mianzi_list, shoupai) {
+function calc_score(mianzi_list, shoupai, rongpai) {
 
     let n_shunzi = 0;
     let hu  = 0;
@@ -222,7 +222,16 @@ function calc_score(mianzi_list, shoupai) {
 
     // 一般形：将牌（第0个）+ 4面子
     let jiang = mianzi_list[0];
-    hu += pai_hu(jiang[0], +jiang[1]);
+    let jiang_zimo = ! rongpai && jiang.includes('!');  // 将牌为自摸张（点炮不算自摸）
+    if (jiang_zimo) {
+        // 听2对：将牌自摸 幺九 4胡1幺 / 2-8 2胡（权威规则：自摸算4胡1幺/2胡）
+        let yao_p = yaojiu_pai(jiang[0], +jiang[1]);
+        hu += yao_p ? 4 : 2;
+        yao += yao_p ? 1 : 0;
+    }
+    else {
+        hu += pai_hu(jiang[0], +jiang[1]);      // 将牌点炮/查胡：幺九 2 / 2-8 1
+    }
 
     for (let i = 1; i < mianzi_list.length; i++) {
         let m = mianzi_list[i].replace(/!$/,'');
@@ -460,7 +469,7 @@ function hule(shoupai, rongpai, param) {
 
     for (let mianzi_list of hule_mianzi(shoupai, rongpai)) {
 
-        let score  = calc_score(mianzi_list, shoupai);
+        let score  = calc_score(mianzi_list, shoupai, rongpai);
         let name   = get_hupai_name(score, param);
         let rv     = get_defen(score, param, rongpai);
 
