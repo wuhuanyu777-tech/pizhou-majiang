@@ -169,11 +169,14 @@ module.exports = class Player extends Majiang.Player {
     }
 
     action_kaiju(kaiju) {
-        if (! this._view) return this.callback();
+        const dice = require('./dice');
+        // 等骰子动画播完再发牌（先掷骰定庄，再开局）
+        let t = dice.DICE_ANIM_MS;
+        if (! this._view) { setTimeout(()=> this.callback(), t); return; }
         $('.kaiju', this._node.root).off('click');
         // 开局画面短暂展示后自动继续（无需点击），否则 4 名真人若都不点击，
         // 服务器会一直等待回复而无法发牌
-        setTimeout(()=> this.callback(), 800);
+        setTimeout(()=> this.callback(), t);
     }
 
     action_qipai(qipai) { this.callback() }

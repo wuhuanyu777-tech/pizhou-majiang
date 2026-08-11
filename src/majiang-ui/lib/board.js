@@ -10,6 +10,7 @@ const Shan       = require('./shan');
 const He         = require('./he');
 const HuleDialog = require('./dialog');
 const summary    = require('./summary');
+const dice       = require('./dice');
 const voice      = require('./voice');
 
 const { hide, show, fadeIn, fadeOut } = require('./fadein');
@@ -312,6 +313,11 @@ module.exports = class Board {
         let title = $('<span>').text(this._model.title).html()
                                             .replace(/\n/g,'<br>');
         $('.title', this._view.kaiju).html(title);
+        // 第一局开局掷骰子动画（dice 由服务端 kaiju 下发，仅开局一次）
+        if (this._model.dice && ! this._dice_played) {
+            this._dice_played = true;
+            dice.play(this._model.dice[0], this._model.dice[1]);
+        }
         for (let id = 0; id < 4; id++) {
             let c = class_name[(4 - this.viewpoint + id) % 4];
             let name = (this.dummy_name == null)

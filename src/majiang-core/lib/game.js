@@ -179,6 +179,12 @@ module.exports = class Game {
 
         this._model.qijia = qijia ?? Math.floor(Math.random() * 4);
 
+        // 生成骰子点数：保证 (dice1+dice2) % 4 == qijia（骰子定东逻辑与座位一致）
+        let d1 = 1 + Math.floor(Math.random() * 6);
+        let cands = [];
+        for (let x = 1; x <= 6; x++) if ((d1 + x) % 4 == this._model.qijia) cands.push(x);
+        this._model.dice = [d1, cands[Math.floor(Math.random() * cands.length)]];
+
         this._max_jushu = this._rule['場数'] == 0 ? 0
                         : this._rule['場数'] * 4 - 1;
 
@@ -200,7 +206,8 @@ module.exports = class Game {
                     rule:   this._rule,
                     title:  this._paipu.title,
                     player: this._paipu.player,
-                    qijia:  this._paipu.qijia
+                    qijia:  this._paipu.qijia,
+                    dice:   this._model.dice
                 }
             }));
         }

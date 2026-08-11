@@ -48,6 +48,7 @@ module.exports = class Board {
         this.title  = kaiju.title;
         this.player = kaiju.player;
         this.qijia  = kaiju.qijia;
+        this.dice   = kaiju.dice;
 
         this.zhuangfeng = 0;
         this.jushu      = 0;
