@@ -33,7 +33,7 @@ const ACTION_MAP = {
 const PREFIX = { M: 'BDW_F_MJ_PZ_M_', W: 'BDW_F_MJ_PZ_W_' };
 
 const _cache = {};
-let _sex = 'M';          // 当前音色：M=男声 W=女声
+let _sex = 'W';          // 当前音色：M=男声 W=女声（默认女声）
 
 /* 取某基名的实际文件名（从 manifest 随机选一个存在的变体） */
 function pick_file(base) {
